@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{3809c83a-579b-4d93-8bda-6e468fe1d8df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Paths">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Actors">
+      <UniqueIdentifier>{5bc13724-1950-488d-839a-66d781d76a4b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Framework\CommonTypes.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Paths\CPathSegment.h">
+      <Filter>Paths</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Common.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Paths\CPathManager.h">
+      <Filter>Paths</Filter>
+    </ClInclude>
+    <ClInclude Include="Paths\APathIntersection.h">
+      <Filter>Paths</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Paths\CPathSegment.cpp">
+      <Filter>Paths</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Main.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Paths\CPathManager.cpp">
+      <Filter>Paths</Filter>
+    </ClCompile>
+    <ClCompile Include="Paths\APathIntersection.cpp">
+      <Filter>Paths</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
