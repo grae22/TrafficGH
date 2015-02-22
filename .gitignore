@@ -44,3 +44,9 @@ Temporary Items
 *.obj
 *.log
 src/Traffic/MSSCCPRJ.SCC
+src/Debug/
+src/Traffic/Debug/
+src/Debug/Traffic.exe
+*.vssscc
+*.SCC
+CopyFromExperimental.bat
