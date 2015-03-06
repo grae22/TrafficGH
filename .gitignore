@@ -50,3 +50,6 @@ src/Debug/Traffic.exe
 *.vssscc
 *.SCC
 CopyFromExperimental.bat
+*.sdf
+*.sdf
+*.sdf
