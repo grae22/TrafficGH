@@ -22,16 +22,19 @@ public:
 
   //-- Public getters.
 public:
-  bool GetDoesActorHaveRightOfWay( const CActor& actor ) const;
+  virtual bool GetDoesActorHaveRightOfWay( const CActor& actor ) const;
 
   //-- Protected setters.
 protected:
   void SetActorWithRightOfWay( const CActor& actor );
+  void AddActorWithRightOfWay( const CActor& actor );
 
   //-- Private members.
 private:
+  static uint m_nextId;
+  uint m_id;
   vector< CPathSegment* > m_segments;
-  weak_ptr< CActor > m_actorWithRightOfWay;
+  vector< weak_ptr< CActor > > m_actorsWithRightOfWay;
 };
 
 //-----------------------------------------------------------------------------

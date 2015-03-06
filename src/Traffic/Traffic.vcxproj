@@ -11,17 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actors\CActor.h" />
     <ClInclude Include="Framework\Common.h" />
     <ClInclude Include="Framework\CommonTypes.h" />
     <ClInclude Include="Paths\APathIntersection.h" />
     <ClInclude Include="Paths\CPathManager.h" />
     <ClInclude Include="Paths\CPathSegment.h" />
+    <ClInclude Include="Paths\Intersections\CPathIntersection_None.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Main.cpp" />
     <ClCompile Include="Paths\APathIntersection.cpp" />
     <ClCompile Include="Paths\CPathManager.cpp" />
     <ClCompile Include="Paths\CPathSegment.cpp" />
+    <ClCompile Include="Paths\Intersections\CPathIntersection_None.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{590A1C45-C2E1-4433-AF42-C8024F400820}</ProjectGuid>

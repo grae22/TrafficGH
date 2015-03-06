@@ -1,12 +1,18 @@
 #include "CPathSegment.h"
+#include "APathIntersection.h"
+#include "Intersections\CPathIntersection_None.h"
 
 //-----------------------------------------------------------------------------
 
+uint CPathSegment::m_nextId = 1;
+
+// Public methods =============================================================
+
 CPathSegment::CPathSegment()
   :
-  m_id( 0 ),
-  m_nextSegments(),
-  m_prevSegments(),
+  m_id( m_nextId++ ),
+  m_nextIntersection( CPathIntersection_None() ),   // >>>YOU_ARE_HERE<<< TODO: Fix related warning.
+  m_prevIntersection( CPathIntersection_None() ),
   m_points()
 {
 }
@@ -19,16 +25,16 @@ CPathSegment::~CPathSegment()
 
 //-----------------------------------------------------------------------------
 
-void CPathSegment::AddNextSegment( const CPathSegment& segment )
+void CPathSegment::AddNextIntersection( const APathIntersection& intersection )
 {
-  m_nextSegments.push_back( make_unique< SegmentJoin >( segment ) );
+  m_nextIntersection = intersection;
 }
 
 //-----------------------------------------------------------------------------
 
-void CPathSegment::AddPrevSegment( const CPathSegment& segment )
+void CPathSegment::AddPrevIntersection( const APathIntersection& intersection )
 {
-  m_prevSegments.push_back( make_unique< SegmentJoin >( segment ) );
+  m_prevIntersection = intersection;
 }
 
 //-----------------------------------------------------------------------------

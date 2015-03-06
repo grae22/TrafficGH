@@ -11,6 +11,9 @@
     <Filter Include="Actors">
       <UniqueIdentifier>{5bc13724-1950-488d-839a-66d781d76a4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Paths\Intersections">
+      <UniqueIdentifier>{97aa074d-0dc6-4336-a7a4-68b3be55c518}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\CommonTypes.h">
@@ -28,6 +31,12 @@
     <ClInclude Include="Paths\APathIntersection.h">
       <Filter>Paths</Filter>
     </ClInclude>
+    <ClInclude Include="Actors\CActor.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Paths\Intersections\CPathIntersection_None.h">
+      <Filter>Paths\Intersections</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Paths\CPathSegment.cpp">
@@ -41,6 +50,9 @@
     </ClCompile>
     <ClCompile Include="Paths\APathIntersection.cpp">
       <Filter>Paths</Filter>
+    </ClCompile>
+    <ClCompile Include="Paths\Intersections\CPathIntersection_None.cpp">
+      <Filter>Paths\Intersections</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

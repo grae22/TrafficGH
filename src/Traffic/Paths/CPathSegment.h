@@ -4,6 +4,10 @@
 
 //-----------------------------------------------------------------------------
 
+class APathIntersection;
+
+//-----------------------------------------------------------------------------
+
 class CPathSegment
 {
   //-- Public methods.
@@ -12,27 +16,16 @@ public:
   virtual ~CPathSegment();
 
   // Setters.
-  void AddNextSegment( const CPathSegment& segment );
-  void AddPrevSegment( const CPathSegment& segment );
+  void AddNextIntersection( const APathIntersection& intersection );
+  void AddPrevIntersection( const APathIntersection& intersection );
   void SetPoints( const vector< vect3 >& points );
-
-  //-- Private types.
-private:
-  struct SegmentJoin
-  {
-  public:
-    const CPathSegment& m_segment;
-
-    SegmentJoin( const CPathSegment& segment )
-      :
-      m_segment( segment ) {}
-  };
 
   //-- Private members.
 private:
+  static uint m_nextId;
   uint m_id;
-  vector< unique_ptr< SegmentJoin > > m_nextSegments;
-  vector< unique_ptr< SegmentJoin > > m_prevSegments;
+  APathIntersection& m_nextIntersection;
+  APathIntersection& m_prevIntersection;
   vector< vect3 > m_points;
 };
 
