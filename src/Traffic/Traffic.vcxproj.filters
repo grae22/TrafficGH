@@ -14,6 +14,12 @@
     <Filter Include="Paths\Intersections">
       <UniqueIdentifier>{97aa074d-0dc6-4336-a7a4-68b3be55c518}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Xml">
+      <UniqueIdentifier>{e50e3b27-c760-4988-8452-761eca5530fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Log">
+      <UniqueIdentifier>{484d8610-ef08-4170-a052-b9691eef3b59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\CommonTypes.h">
@@ -37,6 +43,12 @@
     <ClInclude Include="Paths\Intersections\CPathIntersection_None.h">
       <Filter>Paths\Intersections</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\Xml\tinyxml2.h">
+      <Filter>Framework\Xml</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Log\CLog.h">
+      <Filter>Framework\Log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Paths\CPathSegment.cpp">
@@ -53,6 +65,12 @@
     </ClCompile>
     <ClCompile Include="Paths\Intersections\CPathIntersection_None.cpp">
       <Filter>Paths\Intersections</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Xml\tinyxml2.cpp">
+      <Filter>Framework\Xml</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Log\CLog.cpp">
+      <Filter>Framework\Log</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

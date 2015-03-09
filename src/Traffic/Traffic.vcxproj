@@ -14,13 +14,17 @@
     <ClInclude Include="Actors\CActor.h" />
     <ClInclude Include="Framework\Common.h" />
     <ClInclude Include="Framework\CommonTypes.h" />
+    <ClInclude Include="Framework\Log\CLog.h" />
+    <ClInclude Include="Framework\Xml\tinyxml2.h" />
     <ClInclude Include="Paths\APathIntersection.h" />
     <ClInclude Include="Paths\CPathManager.h" />
     <ClInclude Include="Paths\CPathSegment.h" />
     <ClInclude Include="Paths\Intersections\CPathIntersection_None.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\Log\CLog.cpp" />
     <ClCompile Include="Framework\Main.cpp" />
+    <ClCompile Include="Framework\Xml\tinyxml2.cpp" />
     <ClCompile Include="Paths\APathIntersection.cpp" />
     <ClCompile Include="Paths\CPathManager.cpp" />
     <ClCompile Include="Paths\CPathSegment.cpp" />
