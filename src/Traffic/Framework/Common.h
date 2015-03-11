@@ -11,10 +11,3 @@
 // Namespaces.
 using namespace std;
 using namespace CommonTypes;
-
-// Globals.
-namespace Global
-{
-  static CLog g_logInfo( "Info" );
-  static CLog g_logError( "Error" );
-};

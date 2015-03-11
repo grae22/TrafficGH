@@ -51,7 +51,4 @@ src/Debug/Traffic.exe
 *.SCC
 CopyFromExperimental.bat
 *.sdf
-*.sdf
-*.sdf
-*.sdf
-*.sdf
+src/Traffic.v12.suo

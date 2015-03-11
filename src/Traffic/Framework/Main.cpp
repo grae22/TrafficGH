@@ -4,17 +4,14 @@
 
 //-----------------------------------------------------------------------------
 
-using namespace Global;
-
-//-----------------------------------------------------------------------------
-
 int main()
 {
-  g_logInfo.Initialise( "" );
-  g_logError.Initialise( "" );
+  CLog::Initialise( "" );
 
   CPathManager pathManager;
   pathManager.Initialise( "Paths.xml" );
+
+  CLog::Shutdown();
 
   return 0;
 }

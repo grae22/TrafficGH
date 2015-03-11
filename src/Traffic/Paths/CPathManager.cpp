@@ -3,7 +3,6 @@
 
 //-----------------------------------------------------------------------------
 
-using namespace Global;
 using namespace tinyxml2;
 
 //-----------------------------------------------------------------------------
@@ -27,7 +26,7 @@ CPathManager::~CPathManager()
 bool CPathManager::Initialise( const string& filename )
 {
   // Load the doc.
-  g_logInfo << string() + __FUNCTION__ + "Loading '" + filename + "'...";
+  CLog::Log( INFO, string() + __FUNCTION__ + ": Loading '" + filename + "'..." );
 
   XMLDocument doc;
 
@@ -37,7 +36,7 @@ bool CPathManager::Initialise( const string& filename )
   }
   else
   {
-//    g_logError << string() + __FUNCTION__ + "Failed to load '" + filename + ".";
+    CLog::Log( ERROR, string() + __FUNCTION__ + ": Failed to load '" + filename + "." );
     return false;
   }
 

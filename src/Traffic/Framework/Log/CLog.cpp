@@ -1,5 +1,6 @@
 #include "CLog.h"
 #include <assert.h>
+#include <ctime>
 
 //-----------------------------------------------------------------------------
 
@@ -7,122 +8,179 @@ using namespace std;
 
 //-----------------------------------------------------------------------------
 
-CLog::CLog( const string& name ) :
-  c_name( name ),
-  m_file( nullptr )
-{
-}
-
-//-----------------------------------------------------------------------------
-
-CLog::~CLog()
-{
-  *this << "Log ended.";
-
-  if( m_file != nullptr )
-  {
-    fclose( m_file );
-  }
-}
+string CLog::m_logAbsPath = "";
+map< Log::Type, FILE* > CLog::m_files = map< Log::Type, FILE* >();
 
 //-----------------------------------------------------------------------------
 
 void CLog::Initialise( const std::string& logAbsPath )
 {
-  errno_t err = fopen_s( &m_file,
-    ( logAbsPath + c_name + ".log" ).c_str(),
-    "wt" );
+  m_logAbsPath = logAbsPath;
 
-  assert( err == 0 );
-
-  if( err != 0 )
-  {
-    m_file = nullptr;
-  }
-
-  *this << "Log started.";
+  AddLog( INFO, "info" );
+  AddLog( ERROR, "error" );
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const string& text )
+void CLog::Shutdown()
 {
-  if( m_file != nullptr )
+  for( map< Log::Type, FILE* >::const_iterator it = m_files.begin();
+       it != m_files.end();
+       it++ )
   {
-    fwrite( text.c_str(),
-            text.length(),
-            1,
-            m_file );
-
-    fwrite( "\n",
-            1,
-            1,
-            m_file );
+    Log( it->first, "Log end" );
+    fclose( it->second );
   }
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const char* text )
+void CLog::Log( const Log::Type type,
+                const string& text )
+{
+  FILE* file = nullptr;
+
+  map< Log::Type, FILE* >::const_iterator it = m_files.find( type );
+
+  assert( it != m_files.end() );
+
+  if( it != m_files.end() )
+  {
+    file = it->second;
+
+    assert( file != nullptr );
+
+    // Timestamp.
+    string timeStamp;
+    struct tm newTime;
+    __time32_t time32;
+    errno_t err;
+    _time32( &time32 );
+    err = _localtime32_s( &newTime, &time32 );
+    if( err == 0 )
+    {
+      timeStamp += ( newTime.tm_hour < 10 ? "0" : "" );
+      timeStamp += to_string( newTime.tm_hour );
+      timeStamp += ":";
+      timeStamp += ( newTime.tm_min < 10 ? "0" : "" );
+      timeStamp += to_string( newTime.tm_min );
+      timeStamp += ":";
+      timeStamp += ( newTime.tm_sec < 10 ? "0" : "" );
+      timeStamp += to_string( newTime.tm_sec );
+    }
+
+    // Write it to file.
+    string logText( "[" + timeStamp + "] " + text + "\n" );
+
+    fwrite( logText.c_str(),
+            logText.length(),
+            1,
+            file );
+  }
+}
+
+//-----------------------------------------------------------------------------
+
+void CLog::Log( const Log::Type type,
+                const char* text )
 {
   string s( text );
-  *this << s;
+  Log( type, s );
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const char& value )
+void CLog::Log( const Log::Type type,
+                const char& value )
 {
-  *this << to_string( value );
+  Log( type, to_string( value ) );
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const unsigned char& value )
+void CLog::Log( const Log::Type type,
+                const unsigned char& value )
 {
-  *this << to_string( value );
+  Log( type, to_string( value ) );
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const short& value )
+void CLog::Log( const Log::Type type,
+                const short& value )
 {
-  *this << to_string( value );
+  Log( type, to_string( value ) );
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const unsigned short& value )
+void CLog::Log( const Log::Type type,
+                const unsigned short& value )
 {
-  *this << to_string( value );
+  Log( type, to_string( value ) );
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const int& value )
+void CLog::Log( const Log::Type type,
+                const int& value )
 {
-  *this << to_string( value );
+  Log( type, to_string( value ) );
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const unsigned int& value )
+void CLog::Log( const Log::Type type,
+                const unsigned int& value )
 {
-  *this << to_string( value );
+  Log( type, to_string( value ) );
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const float& value )
+void CLog::Log( const Log::Type type,
+                const float& value )
 {
-  *this << to_string( value );
+  Log( type, to_string( value ) );
 }
 
 //-----------------------------------------------------------------------------
 
-void CLog::operator <<( const double& value )
+void CLog::Log( const Log::Type type,
+                const double& value )
 {
-  *this << to_string( value );
+  Log( type, to_string( value ) );
+}
+
+//-----------------------------------------------------------------------------
+
+void CLog::AddLog( const Log::Type type,
+                   const string& name )
+{
+  map< Log::Type, FILE* >::const_iterator it =
+    m_files.find( type );
+
+  assert( it == m_files.end() );    // Shouldn't already be in the map.
+
+  if( it == m_files.end() )
+  {
+    FILE* file;
+
+    errno_t err = fopen_s( &file,
+      ( m_logAbsPath + name + ".log" ).c_str(),
+      "wt" );
+
+    assert( err == 0 );
+
+    if( err == 0 )
+    {
+      m_files.insert(
+        pair< Log::Type, FILE* >( type, file ) );
+
+      Log( type, "Log Started" );
+    }
+  }
 }
 
 //-----------------------------------------------------------------------------
