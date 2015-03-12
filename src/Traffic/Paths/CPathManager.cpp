@@ -26,7 +26,7 @@ CPathManager::~CPathManager()
 bool CPathManager::Initialise( const string& filename )
 {
   // Load the doc.
-  CLog::Log( INFO, string() + __FUNCTION__ + ": Loading '" + filename + "'..." );
+  LOG( INFO, "Loading '" + filename + "'..." );
 
   XMLDocument doc;
 
@@ -36,7 +36,7 @@ bool CPathManager::Initialise( const string& filename )
   }
   else
   {
-    CLog::Log( ERROR, string() + __FUNCTION__ + ": Failed to load '" + filename + "." );
+    LOG( ERROR, "Failed to load '" + filename + "." );
     return false;
   }
 

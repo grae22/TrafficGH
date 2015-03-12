@@ -29,7 +29,7 @@ void CLog::Shutdown()
        it != m_files.end();
        it++ )
   {
-    Log( it->first, "Log end" );
+    LOG( it->first, "Log end" );
     fclose( it->second );
   }
 }
@@ -37,9 +37,10 @@ void CLog::Shutdown()
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const string& text )
+                const string& text,
+                char* function )
 {
-  FILE* file = nullptr;
+  FILE* fileHandle = nullptr;
 
   map< Log::Type, FILE* >::const_iterator it = m_files.find( type );
 
@@ -47,9 +48,9 @@ void CLog::Log( const Log::Type type,
 
   if( it != m_files.end() )
   {
-    file = it->second;
+    fileHandle = it->second;
 
-    assert( file != nullptr );
+    assert( fileHandle != nullptr );
 
     // Timestamp.
     string timeStamp;
@@ -70,87 +71,99 @@ void CLog::Log( const Log::Type type,
       timeStamp += to_string( newTime.tm_sec );
     }
 
+    // Function info.
+    string functionInfo( string() + function + "()" );
+
     // Write it to file.
-    string logText( "[" + timeStamp + "] " + text + "\n" );
+    string logText( "[" + timeStamp + "] | " + functionInfo + " | " + text + "\n" );
 
     fwrite( logText.c_str(),
             logText.length(),
             1,
-            file );
+            fileHandle );
   }
 }
 
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const char* text )
+                const char* text,
+                char* function )
 {
   string s( text );
-  Log( type, s );
+  Log( type, s, function );
 }
 
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const char& value )
+                const char& value,
+                char* function )
 {
-  Log( type, to_string( value ) );
+  Log( type, to_string( value ), function );
 }
 
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const unsigned char& value )
+                const unsigned char& value,
+                char* function )
 {
-  Log( type, to_string( value ) );
+  Log( type, to_string( value ), function );
 }
 
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const short& value )
+                const short& value,
+                char* function )
 {
-  Log( type, to_string( value ) );
+  Log( type, to_string( value ), function );
 }
 
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const unsigned short& value )
+                const unsigned short& value,
+                char* function )
 {
-  Log( type, to_string( value ) );
+  Log( type, to_string( value ), function );
 }
 
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const int& value )
+                const int& value,
+                char* function )
 {
-  Log( type, to_string( value ) );
+  Log( type, to_string( value ), function );
 }
 
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const unsigned int& value )
+                const unsigned int& value,
+                char* function )
 {
-  Log( type, to_string( value ) );
+  Log( type, to_string( value ), function );
 }
 
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const float& value )
+                const float& value,
+                char* function )
 {
-  Log( type, to_string( value ) );
+  Log( type, to_string( value ), function );
 }
 
 //-----------------------------------------------------------------------------
 
 void CLog::Log( const Log::Type type,
-                const double& value )
+                const double& value,
+                char* function )
 {
-  Log( type, to_string( value ) );
+  Log( type, to_string( value ), function );
 }
 
 //-----------------------------------------------------------------------------
@@ -178,7 +191,7 @@ void CLog::AddLog( const Log::Type type,
       m_files.insert(
         pair< Log::Type, FILE* >( type, file ) );
 
-      Log( type, "Log Started" );
+      LOG( type, "Log Started" );
     }
   }
 }
