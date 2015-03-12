@@ -6,12 +6,12 @@
 
 int main()
 {
-  CLog::Initialise( "" );
+  LOG_INITALISE( "" );
 
   CPathManager pathManager;
   pathManager.Initialise( "Paths.xml" );
 
-  CLog::Shutdown();
+  LOG_SHUTDOWN();
 
   return 0;
 }

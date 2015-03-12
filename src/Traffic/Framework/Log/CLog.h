@@ -50,6 +50,10 @@ private:
 
 //-----------------------------------------------------------------------------
 
+// Macro defines - use these rather than calling the CLog class directly.
+
+#define LOG_INITALISE( absLogPath ) CLog::Initialise( absLogPath )
+#define LOG_SHUTDOWN() CLog::Shutdown()
 #define LOG( type, message ) CLog::Log( type, message, __FUNCTION__ )
 
 //-----------------------------------------------------------------------------
