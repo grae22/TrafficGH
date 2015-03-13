@@ -30,15 +30,32 @@ bool CPathManager::Initialise( const string& filename )
 
   XMLDocument doc;
 
-  if( doc.LoadFile( filename.c_str() ) != XML_NO_ERROR )
+  if( doc.LoadFile( filename.c_str() ) == XML_SUCCESS )
   {
+    CXmlElement* root = doc.FirstChildElement( "Root" );
 
+    if( root == 0 )
+    {
+      LOG( ERROR, "No 'Root' element found in '" + filename + "'." );
+      return false;
+    }
+
+    CreatePathsFromXml( *root );
   }
   else
   {
-    LOG( ERROR, "Failed to load '" + filename + "." );
+    LOG( ERROR, "Failed to load '" + filename + "'." );
     return false;
   }
+
+  return true;
+}
+
+//-----------------------------------------------------------------------------
+
+bool CPathManager::CreatePathsFromXml( const CXmlElement& xml )
+{
+  LOG( INFO, "Creating paths from xml..." );
 
   return true;
 }

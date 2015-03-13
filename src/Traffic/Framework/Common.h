@@ -11,3 +11,8 @@
 // Namespaces.
 using namespace std;
 using namespace CommonTypes;
+
+// Xml.
+#include "Xml\tinyxml2.h"
+
+typedef tinyxml2::XMLElement CXmlElement;

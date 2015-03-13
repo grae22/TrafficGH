@@ -17,6 +17,7 @@
     <ClInclude Include="Framework\Log\CLog.h" />
     <ClInclude Include="Framework\Xml\tinyxml2.h" />
     <ClInclude Include="Paths\APathIntersection.h" />
+    <ClInclude Include="Paths\CPath.h" />
     <ClInclude Include="Paths\CPathManager.h" />
     <ClInclude Include="Paths\CPathSegment.h" />
     <ClInclude Include="Paths\Intersections\CPathIntersection_None.h" />
@@ -26,6 +27,7 @@
     <ClCompile Include="Framework\Main.cpp" />
     <ClCompile Include="Framework\Xml\tinyxml2.cpp" />
     <ClCompile Include="Paths\APathIntersection.cpp" />
+    <ClCompile Include="Paths\CPath.cpp" />
     <ClCompile Include="Paths\CPathManager.cpp" />
     <ClCompile Include="Paths\CPathSegment.cpp" />
     <ClCompile Include="Paths\Intersections\CPathIntersection_None.cpp" />

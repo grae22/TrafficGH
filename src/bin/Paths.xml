@@ -1,0 +1,57 @@
+<Root>
+  <!-- PATHS -->
+  <PathCollection>
+    <!-- NORTH / SOUTH Path-->
+    <Path>
+      <Name>NorthSouth</Name>
+      <SegmentCollection>
+        <Segment>
+          <StartIntersection>North</StartIntersection>
+          <EndIntersection>Central</EndIntersection>
+        </Segment>
+        <Segment>
+          <StartIntersection>South</StartIntersection>
+          <EndIntersection>Central</EndIntersection>
+        </Segment>
+      </SegmentCollection>
+    </Path>
+    <!-- EAST / WEST Path -->
+    <Path>
+      <Name>EastWest</Name>
+      <SegmentCollection>
+        <Segment>
+          <StartIntersection>East</StartIntersection>
+          <EndIntersection>Central</EndIntersection>
+        </Segment>
+        <Segment>
+          <StartIntersection>West</StartIntersection>
+          <EndIntersection>Central</EndIntersection>
+        </Segment>
+      </SegmentCollection>
+    </Path>
+  </PathCollection>
+
+  <!-- INTERSECTIONS -->
+  <IntersectionCollection>
+    <Intersection>
+      <Name>North</Name>
+      <Type>DeadEnd</Type>
+    </Intersection>
+    <Intersection>
+      <Name>Eeat</Name>
+      <Type>DeadEnd</Type>
+    </Intersection>
+    <Intersection>
+      <Name>South</Name>
+      <Type>DeadEnd</Type>
+    </Intersection>
+    <Intersection>
+      <Name>West</Name>
+      <Type>DeadEnd</Type>
+    </Intersection>
+    <Intersection>
+      <Name>Central</Name>
+      <Type>FourWayStop</Type>
+    </Intersection>
+  </IntersectionCollection>
+</Root>

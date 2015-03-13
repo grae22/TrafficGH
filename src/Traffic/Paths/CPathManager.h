@@ -11,6 +11,7 @@ public:
   ~CPathManager();
 
   bool Initialise( const string& filename );
+  bool CreatePathsFromXml( const CXmlElement& xml );
 
   //-- Private members.
 private:

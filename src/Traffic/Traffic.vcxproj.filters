@@ -49,6 +49,9 @@
     <ClInclude Include="Framework\Log\CLog.h">
       <Filter>Framework\Log</Filter>
     </ClInclude>
+    <ClInclude Include="Paths\CPath.h">
+      <Filter>Paths</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Paths\CPathSegment.cpp">
@@ -71,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="Framework\Log\CLog.cpp">
       <Filter>Framework\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Paths\CPath.cpp">
+      <Filter>Paths</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

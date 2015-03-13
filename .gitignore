@@ -53,3 +53,4 @@ CopyFromExperimental.bat
 *.sdf
 src/Traffic.v12.suo
 src/CopyFromGH.bat
+src/Traffic.sdf
